@@ -99,7 +99,7 @@ angular.module('app').factory 'PuppetDB', ($http,
       .success (data, status, headers, config) ->
         success(angular.fromJson(data), headers('X-Records'))
       .error (data, status, headers, config) ->
-        throw new Error(data or "Failed to fetch #{endpoint}") unless status == 0
+        throw new Error(data or "Failed to fetch #{endpoint}") unless status <= 0
 
     cancel: =>
       @canceller.resolve("user cancelled")
